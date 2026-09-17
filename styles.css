@@ -9,7 +9,7 @@ body{
 .calculator-body{
    border: 1px solid black;
    min-height: 100px;
-   min-width: 100px;
+   min-width: 130px;
 }
 
 .calculator-display{
@@ -17,6 +17,7 @@ body{
     border: 1px solid black;
     min-height: 20px;
     min-width: 80px;
+    text-align: right;
 }
 
 .row-buttons-container{
@@ -24,10 +25,11 @@ body{
     display: flex;
     max-width: 80px;
 }
-
 .calculator-button{
-    
-    border: 1px solid black;
+    margin-left: 1px;
+    margin-right: 1px;
+    /* border: 1px solid black; */
     flex: auto;
     min-height: 10px;
+    align-content: center;
 }
