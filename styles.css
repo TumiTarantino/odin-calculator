@@ -1,0 +1,33 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;                /* Removes default browser spacing */
+    min-height: 100dvh;       /* Stretches body to full viewport height */
+}
+
+.calculator-body{
+   border: 1px solid black;
+   min-height: 100px;
+   min-width: 100px;
+}
+
+.calculator-display{
+    margin: 10px;
+    border: 1px solid black;
+    min-height: 20px;
+    min-width: 80px;
+}
+
+.row-buttons-container{
+    margin: 10px;
+    display: flex;
+    max-width: 80px;
+}
+
+.calculator-button{
+    
+    border: 1px solid black;
+    flex: auto;
+    min-height: 10px;
+}
