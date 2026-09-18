@@ -1,46 +1,38 @@
-//These functions need type checks before trying to return the numbers
-function add(num1,num2){
-    return num1+num2
-}
+const buttonsValues = [
+    "C", "x", "%", "/",
+    "7", "8", "9", "*",
+    "4", "5", "6", "-",
+    "1", "2", "3", "+",
+    "()", "0", ".", "="
+];
+//x is backspace
+const rightSymbols = ["/", "*", "-", "+", "="];
+const topSymbols = ["C", "x", "%"];
 
-function subtract(num1,num2){
-    return num1-num2
-}
+const display = document.getElementById("display")
 
-function multiply(num1,num2){
-    return num1*num2
-}
+let A = 0;
+let operator = null;
+let B = null;
 
-function divide(num1,num2){
-    return num1/num2
-}
+//Adds buttons and functionality to html
+for(let i = 0; i < buttonsValues.length; i++){
+    //Creates buttons in memory, does <button>AC</button>, for example
+    let value = buttonsValues[i];
+    let button = document.createElement("button");
+    button.innerText = value;
 
-//Calculator input variables
-let num1 = 0;
-//Should the operator be string?
-let operator = "+";
-let num2 = 0;
-
-function operate(num1,operator,num2){
-    if(operator === "+"){
-        return add(num1,num2);
+    //Styles button colours
+    if(rightSymbols.includes(value)){
+        button.style.backgroundColor = "#FF9500";
     }
-    else if(operator === "-"){
-        return subtract(num1,num2);
+    else if(topSymbols.includes(value)){
+        button.style.backgroundColor = "#D4D4D2";
+        button.style.color = "#1C1C1C";
     }
-    else if(operator === "*"){
-        return multiply(num1,num2);
-    }
-    else if(operator === "/"){
-        return divide(num1,num2);
-    }
+
+    //process button clicks
+
+    // add buttons to calculator
+    document.getElementById("buttons").appendChild(button);
 }
-
-//Event listeners for calculator buttons
-const display = document.querySelector(".calculator-display");
-
-const buttons = document.querySelectorAll("button")
-console.log(buttons)
-buttons.forEach(button => {button.addEventListener("click", () => {
-    alert("button pressed")
-})})
