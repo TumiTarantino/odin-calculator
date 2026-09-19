@@ -6,11 +6,13 @@ function subtract(a,b){
     return a-b;
 }
 function multiply(a,b){
-    return a*b;
+    return (a*b).toFixed(2);
 }
 function divide(a,b){
-    //Won't handle division by zero
-    return a/b;
+    if(b == 0){
+        return "Can't divide by zero"
+    }
+    return (a/b).toFixed(2);
 }
 
 function operate(operator, a, b){
@@ -41,12 +43,12 @@ const topSymbols = ["C", "x", "%"];
 
 const display = document.getElementById("display")
 
-let A = 0;
+let A = null;
 let operator = null;
 let B = null;
 
 function clearAll(){
-    A = 0;
+    A = null;
     operator = null;
     B = null;
 }
@@ -77,26 +79,28 @@ for(let i = 0; i < buttonsValues.length; i++){
                     let numA = Number(A);
                     let numB = Number(B);
 
-                    if (operator == "/"){
-                        display.value = operate("/",numA,numB);
-                    }
-                    else if (operator == "*"){
-                        display.value = operate("*",numA,numB);
-                    }
-                    else if (operator == "-"){
-                        display.value = operate("-",numA,numB);
-                    }
-                    else if (operator == "+"){
-                        display.value = operate("+",numA,numB);
-                    }
-                    clearAll();
+                   display.value = operate(operator, numA, numB);
+                    //clearAll();
+
+                }
+                //Trying to prevent stuff when "=" is pressed without A
+                else if(A == null){
+                    display.value = "number?";
                 }
             }
             else{
+                //Im certain the issue is here?, A needs to keep accumulating,,, 
+                if (operator !== null && display.value !== "") {
+                    // calculate A operator display.value
+                    B = display.value;
+                    // result becomes A
+                    A = operate(operator, Number(A), Number(B));
+                }
+                else{
+                    A = display.value;
+                }
                 operator = value;
-                A = display.value;
                 display.value = "";
-
             }
         }
         else if (topSymbols.includes(value)){
